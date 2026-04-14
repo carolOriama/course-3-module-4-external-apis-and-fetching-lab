@@ -57,7 +57,7 @@ const weatherApi = "https://api.weather.gov/alerts/active?area=";
 
 const cityInput = document.getElementById("city-input");
 const fetchButton = document.getElementById("fetch-weather");
-const weatherDisplay = document.getElementById("weather-display");
+const weatherDisplay = document.getElementById("alerts-display");
 const errorMessage = document.getElementById("error-message");
 const loadingSpinner = document.getElementById("loading-spinner");
 // const availableStatesElement = document.getElementById("available-states");
