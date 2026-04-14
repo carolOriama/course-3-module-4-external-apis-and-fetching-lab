@@ -1,79 +1,79 @@
 const weatherApi = "https://api.weather.gov/alerts/active?area=";
 
-// ADded stste abbreviations so that i don't gues states that don't exist
-const availableStateAbbreviations = [
-  "AL",
-  "AK",
-  "AZ",
-  "AR",
-  "CA",
-  "CO",
-  "CT",
-  "DE",
-  "FL",
-  "GA",
-  "HI",
-  "ID",
-  "IL",
-  "IN",
-  "IA",
-  "KS",
-  "KY",
-  "LA",
-  "ME",
-  "MD",
-  "MA",
-  "MI",
-  "MN",
-  "MS",
-  "MO",
-  "MT",
-  "NE",
-  "NV",
-  "NH",
-  "NJ",
-  "NM",
-  "NY",
-  "NC",
-  "ND",
-  "OH",
-  "OK",
-  "OR",
-  "PA",
-  "RI",
-  "SC",
-  "SD",
-  "TN",
-  "TX",
-  "UT",
-  "VT",
-  "VA",
-  "WA",
-  "WV",
-  "WI",
-  "WY",
-];
-const availableStateSet = new Set(availableStateAbbreviations);
+// // ADded stste abbreviations so that i don't gues states that don't exist
+// const availableStateAbbreviations = [
+//   "AL",
+//   "AK",
+//   "AZ",
+//   "AR",
+//   "CA",
+//   "CO",
+//   "CT",
+//   "DE",
+//   "FL",
+//   "GA",
+//   "HI",
+//   "ID",
+//   "IL",
+//   "IN",
+//   "IA",
+//   "KS",
+//   "KY",
+//   "LA",
+//   "ME",
+//   "MD",
+//   "MA",
+//   "MI",
+//   "MN",
+//   "MS",
+//   "MO",
+//   "MT",
+//   "NE",
+//   "NV",
+//   "NH",
+//   "NJ",
+//   "NM",
+//   "NY",
+//   "NC",
+//   "ND",
+//   "OH",
+//   "OK",
+//   "OR",
+//   "PA",
+//   "RI",
+//   "SC",
+//   "SD",
+//   "TN",
+//   "TX",
+//   "UT",
+//   "VT",
+//   "VA",
+//   "WA",
+//   "WV",
+//   "WI",
+//   "WY",
+// ];
+// const availableStateSet = new Set(availableStateAbbreviations);
 
 const cityInput = document.getElementById("city-input");
 const fetchButton = document.getElementById("fetch-weather");
 const weatherDisplay = document.getElementById("weather-display");
 const errorMessage = document.getElementById("error-message");
 const loadingSpinner = document.getElementById("loading-spinner");
-const availableStatesElement = document.getElementById("available-states");
+// const availableStatesElement = document.getElementById("available-states");
 
-function renderAvailableStates() {
-  if (!availableStatesElement) return;
-  const listText = availableStateAbbreviations.join(", ");
-  availableStatesElement.innerHTML = `
-    <p><strong>Available state abbreviations:</strong></p>
-    <p>${listText}</p>
-  `;
-}
+// function renderAvailableStates() {
+//   if (!availableStatesElement) return;
+//   const listText = availableStateAbbreviations.join(", ");
+//   availableStatesElement.innerHTML = `
+//     <p><strong>Available state abbreviations:</strong></p>
+//     <p>${listText}</p>
+//   `;
+// }
 
-function isValidState(state) {
-  return availableStateSet.has(state.trim().toUpperCase());
-}
+// function isValidState(state) {
+//   return availableStateSet.has(state.trim().toUpperCase());
+// }
 
 function clearError() {
   if (!errorMessage) return;
@@ -132,13 +132,11 @@ function fetchWeatherAlerts(state) {
   const normalizedState = state.trim().toUpperCase();
   if (
     !normalizedState ||
-    !/^[A-Z]{2}$/.test(normalizedState) ||
-    !isValidState(normalizedState)
+    !/^[A-Z]{2}$/.test(normalizedState)
+    // || !isValidState(normalizedState)
   ) {
     return Promise.reject(
-      new Error(
-        "Please enter a valid 2-letter state abbreviation from the available list.",
-      ),
+      new Error("Please enter a valid 2-letter state abbreviation."),
     );
   }
 
@@ -181,7 +179,7 @@ function handleFetchAlerts() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  renderAvailableStates();
+  // renderAvailableStates();
 
   if (fetchButton) {
     fetchButton.addEventListener("click", handleFetchAlerts);
